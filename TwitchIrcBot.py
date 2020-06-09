@@ -41,8 +41,9 @@ class CamilleBot(TwitchIrcBot):
         except:
             print("Something went wrong with processing response : {}".format(response))
 
+    # After sending message 'Am i Subscriber?', bot will give you an answer
     def _get_bot_message(self, chat_message):
-        if chat_message.message == "Am I Subcriber?":
+        if chat_message.message == "Am I Subscriber?":
             if chat_message.is_sub_message():
                 return "@{} Yes, you are.".format(chat_message.username)
             else:
