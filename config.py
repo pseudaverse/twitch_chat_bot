@@ -1,7 +1,4 @@
 DEBUG = True
-DEBUG_CHANNEL = ""
-
-WHITELIST = {}
 
 # twitch irc host and port
 HOST = "irc.twitch.tv" 
