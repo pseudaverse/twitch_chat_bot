@@ -18,7 +18,7 @@ class SimpleIrcBot(threading.Thread):
     def _check_on_connected(self, response):
         return len(response) > 0
 
-    def __connect(self):
+    def _connect(self):
         self.socket = socket.socket()
         self.socket.connect((self.host, self.port))
 
@@ -28,7 +28,7 @@ class SimpleIrcBot(threading.Thread):
 
         return self._check_on_connected(response)
 
-    def __get_responses(self):
+    def _get_responses(self):
         is_disconnected = True
         while True:
             try:
