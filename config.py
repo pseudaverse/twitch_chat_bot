@@ -1,13 +1,17 @@
 DEBUG = True
 
 # twitch irc host and port
-HOST = "irc.twitch.tv" 
+HOST = "irc.twitch.tv"
 PORT = 6667
 
 # twitch irc tags host
-TAGS_HOST = "twitch.tv/tags" 
+TAGS_HOST = "twitch.tv/tags"
 
+# Bot Twitch nickname
+NICK = ""
 
-NICK = "" # Bot twitch nickname
+# Bot Twitch oauth token from https://twitchapps.com/tmi/
+PASS = ""
 
-PASS = "" # Bot twitch oauth token
+# Twitch channel, where the bot will work
+CHANNEL = ""

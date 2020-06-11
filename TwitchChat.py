@@ -35,7 +35,7 @@ def parse_raw_response(response):
     if user_info:
         user_info = user_info.group(0)
         username = re.search(r"\w+", user_info).group(0)
-        raw_tags, raw_message = chat_message.split(response)[0], chat_message.split(response)[1]
+        raw_tags, raw_message = tuple(chat_message.split(response))
 
     return TwitchChatMessage(raw_tags, raw_message, username)
 
@@ -46,7 +46,7 @@ def parse_raw_tags(raw_tags):
     return {}
 
 
-# Some usefull twitch irc commands
+# Some useful twitch irc commands
 def mess(sock, message, channel):
     sock.send("PRIVMSG #{} :{}\r\n".format(channel, message).encode("UTF-8"))
 

@@ -16,9 +16,7 @@ class SimpleIrcBot(threading.Thread):
         pass
 
     def _check_on_connected(self, response):
-        if response:
-            return True
-        return False
+        return len(response) > 0
 
     def __connect(self):
         self.socket = socket.socket()
