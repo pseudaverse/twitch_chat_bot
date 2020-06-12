@@ -3,6 +3,13 @@ import config
 
 
 def add_chat_interaction(cls):
+    """Simple decorator for adding interactions into your Instance of TwitchIrcBot
+     func must be function(TwitchChatMessage) -> str (None if bot should not write anything)
+
+    Keyword arguments:
+    cls -- TwitchIrcBot Instance
+
+    """
     def decorator(func):
         cls.chat_interactions.append(func)
         return func
@@ -13,7 +20,8 @@ def add_chat_interaction(cls):
 if __name__ == '__main__':
     MyBot = TwitchIrcBot(config.CHANNEL, config.NICK, config.PASS)
 
-     # Adding some chat interaction scenario
+
+    # Adding some chat interaction scenario
     @add_chat_interaction(MyBot)
     def check_user_subscription(chat_message):
         # After sending message 'Am i Subscriber?', bot will give you an answer

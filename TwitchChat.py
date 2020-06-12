@@ -23,7 +23,7 @@ class TwitchChatMessage:
             self.username = username
 
     def is_sub_message(self):
-        return self.tags['subscriber'] == 1
+        return 'founder' in self.tags['badges'] or 'subscriber' in self.tags['badges']
 
     def is_mod_message(self):
         return self.tags['mod'] == 1 or 'broadcaster' in self.tags['badges']
@@ -42,7 +42,10 @@ def parse_raw_response(response):
 
 def parse_raw_tags(raw_tags):
     if raw_tags:
-        return {raw_tag_info.split('=')[0]: raw_tag_info.split('=')[1] for raw_tag_info in raw_tags.split(';')}
+        raw_tags_info = raw_tags.split(';')
+        for raw_tag in raw_tags_info:
+            raw_tag = raw_tag.split('=')
+        return {tag[0]: tag[1] for tag in raw_tags_info}
     return {}
 
 

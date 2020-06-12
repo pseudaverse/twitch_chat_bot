@@ -35,7 +35,6 @@ class TwitchIrcBot(SimpleIrcBot):
                 bot_message = f(chat_message)
                 if bot_message:
                     mess(self.socket, bot_message, self.channel)
-                    break
 
         except:
             print("Something went wrong with processing response : {}".format(response))
