@@ -4,13 +4,15 @@ import threading
 
 # Simple Irc Bot with auto-reconnect
 class SimpleIrcBot(threading.Thread):
-    def __init__(self, host, channel, nickname, password=None, port=6667):
+    def __init__(self, host, channel, nickname, ping_pong_host=None, password=None, port=6667):
         threading.Thread.__init__(self)
         self.host = host
         self.channel = channel
         self.nickname = nickname
         self.password = password
         self.port = port
+        self.ping_pong_host = ping_pong_host
+
 
     def _start_requests(self):
         pass
@@ -37,8 +39,8 @@ class SimpleIrcBot(threading.Thread):
                 response = self.socket.recv(1024).decode("utf-8")
                 if len(response) == 0:
                     is_disconnected = True
-                elif response == "PING :{}\r\n".format(self.host):
-                    self.socket.send("PONG :{}\r\n".format(self.host).encode("utf-8"))
+                elif response == "PING :{}\r\n".format(self.ping_pong_host):
+                    self.socket.send("PONG :{}\r\n".format(self.ping_pong_host).encode("utf-8"))
                 else:
                     yield response
             except:
