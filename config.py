@@ -3,6 +3,7 @@ DEBUG = True
 # twitch irc host and port
 HOST = "irc.twitch.tv"
 PORT = 6667
+PING_PONG_HOST = "tmi.twitch.tv"
 
 # twitch irc tags host
 TAGS_HOST = "twitch.tv/tags"
