@@ -4,7 +4,7 @@ import threading
 
 # Simple Irc Bot with auto-reconnect
 class SimpleIrcBot(threading.Thread):
-    def __init__(self, host, channel, nickname, ping_pong_host=None, password=None, port=6667):
+    def __init__(self, host, channel, nickname, password=None, ping_pong_host=None, port=6667):
         threading.Thread.__init__(self)
         self.host = host
         self.channel = channel
