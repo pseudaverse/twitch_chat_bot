@@ -7,7 +7,7 @@ import config
 # Example of Bot which using Twitch Tags and can check if chat user is subscriber or not
 class TwitchIrcBot(SimpleIrcBot):
     def __init__(self, channel, nickname, password):
-        super().__init__(config.HOST, channel, nickname, password, config.PORT)
+        super().__init__(config.HOST, channel, nickname, password, config.PING_PONG_HOST, config.PORT)
         self.chat_interactions = []
 
     def _start_requests(self):
@@ -31,8 +31,8 @@ class TwitchIrcBot(SimpleIrcBot):
 
             chat_message = parse_raw_response(response)
 
-            for f in self.chat_interactions:
-                bot_message = f(chat_message)
+            for chat_interaction in self.chat_interactions:
+                bot_message = chat_interaction(chat_message)
                 if bot_message:
                     mess(self.socket, bot_message, self.channel)
 
